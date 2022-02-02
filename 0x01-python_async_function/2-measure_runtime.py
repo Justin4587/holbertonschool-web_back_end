@@ -8,7 +8,7 @@ import time
 wait_n = __import__('1-concurrent_coroutines').wait_n
 
 
-async def measure_time(n: int, max_delay: int) -> float:
+def measure_time(n: int, max_delay: int) -> float:
     """somethings going to happen bets on Traceback??"""
     a = time.time()
 
@@ -16,4 +16,4 @@ async def measure_time(n: int, max_delay: int) -> float:
 
     b = time.time()
     
-    return (a - b) / n
+    return (b - a) / n
