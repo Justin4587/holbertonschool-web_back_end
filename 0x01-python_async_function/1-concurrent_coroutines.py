@@ -10,12 +10,11 @@ wait_random = __import__('0-basic_async_syntax').wait_random
 
 async def wait_n(n: int, max_delay: int) -> List[float]:
     """somethings going to happen bets on Traceback??"""
-    returnList = []
+    retList = []
 
-    
-    returnList = [asyncio.create_task(wait_random(max_delay)) for i in range(n)]
+    retList = [asyncio.create_task(wait_random(max_delay)) for i in range(n)]
     result = []
-    for task in asyncio.as_completed(returnList):
+    for task in asyncio.as_completed(retList):
         result.append(await task)
 
     return result
