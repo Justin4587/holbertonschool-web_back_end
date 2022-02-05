@@ -4,7 +4,7 @@
 """
 
 
-def add(a: float, b:float) -> float:
+def add(a: float, b: float) -> float:
     """
         If any one ever reads this id love to know
     """
