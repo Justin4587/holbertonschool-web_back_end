@@ -11,7 +11,7 @@ class FIFOCache(BaseCaching):
 
     def put(self, key, item):
         """ Im placing some generic text here """
-        
+
         if key and item:
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
                 firstOut = self.temp.pop(0)
@@ -22,7 +22,6 @@ class FIFOCache(BaseCaching):
                 self.temp.append(key)
 
             self.cache_data[key] = item
-
 
     def get(self, key):
         """ bring me the keys"""
