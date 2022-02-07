@@ -9,7 +9,7 @@ T = TypeVar("T")
 
 def safely_get_value(dct: Mapping, key: Any,
                      default: Union[T, None]
-                     ) -> Union[Any, None]:
+                     ) -> Union[Any, T]:
     """somethings going to happen bets on Traceback?? """
     if key in dct:
         return dct[key]
