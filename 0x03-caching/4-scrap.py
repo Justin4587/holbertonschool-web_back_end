@@ -5,14 +5,23 @@
 from base_caching import BaseCaching
 from collections import OrderedDict
 
-
-class MRUCache(BaseCaching):
+class LIFOCache(BaseCaching):
     """somethings going to happen bets on Traceback??"""
-    def __init__(self):
-        self.cache_data = OrderedDict()
-
     temp = []
-    
+
+    if key and item:
+            if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+                firstOut = self.cache_data.popitem(-2)
+                print("DISCARD: " + str(firstOut[0]))
+            self.cache_data[key] = item
+            self.cache_data.move_to_end(key)
+
+    def get(self, key):
+        """ bring me the keys"""
+        if key in self.cache_data:
+            self.cache_data.move_to_end(key)
+            return self.cache_data[key]
+
     def put(self, key, item):
         """ Im placing some generic text here """
 
@@ -32,8 +41,4 @@ class MRUCache(BaseCaching):
 
     def get(self, key):
         """ bring me the keys"""
-        if key in self.cache_data:
-            self.cache_data.move_to_end(key)
-            self.temp.remove(key)
-            self.temp.append(key)
-            return self.cache_data[key]
+        return self.cache_data.get(key)
