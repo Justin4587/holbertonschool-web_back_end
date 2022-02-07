@@ -12,7 +12,7 @@ class MRUCache(BaseCaching):
         self.cache_data = OrderedDict()
 
     temp = []
-    
+
     def put(self, key, item):
         """ Im placing some generic text here """
 
