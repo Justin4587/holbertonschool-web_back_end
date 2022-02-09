@@ -32,7 +32,8 @@ class Server:
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """ Its all in the name """
 
-        assert isinstance(page, int) and type(page) is type(page_size) and page > 0 and page_size > 0
+        assert isinstance(page, int) and type(page) is type(page_size)
+        assert page > 0 and page_size > 0
 
         iLikeTheWordTuple = index_range(page, page_size)
         stupid = iLikeTheWordTuple[0]
