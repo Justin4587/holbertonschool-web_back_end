@@ -43,7 +43,7 @@ class Server:
         """ the same but HYPER """
 
         data = self.get_page(page, page_size)
-        total = len(self.dataset()) / page_size
+        total = math.ceil(len(self.dataset()) / page_size)
 
         return {
             "page_size": len(data),
