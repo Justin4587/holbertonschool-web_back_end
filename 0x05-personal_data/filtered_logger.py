@@ -9,8 +9,9 @@ def filter_datum(fields: List[str], redaction: str,
                  message: str, separator: str) -> str:
     """ I believe I should be removing things """
 
-    for _ in fields:
-        youveGotMail = re.sub(_ + ".*?" + separator,
-                              _ + "=" + redaction + separator, message)
+    print(message)
+    for target in fields:
+        ex = f"(?<={target}=).*?(?={separator})"
+        youveGotMail = re.sub(ex, redaction, message)
 
     return youveGotMail
