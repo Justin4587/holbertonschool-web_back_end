@@ -11,6 +11,6 @@ def filter_datum(fields: List[str], redaction: str,
 
     for _ in fields:
         youveGotMail = re.sub(_ + ".*?" + seperator,
-                              _ + "=" + redaction + seperator, message)
+                              _ + "=" + redaction + separator, message)
 
     return youveGotMail
