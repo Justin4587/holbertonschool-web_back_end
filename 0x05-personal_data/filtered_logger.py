@@ -3,15 +3,30 @@
 
 import re
 from typing import List
+import logging
 
+
+class RedactingFormatter(logging.Formatter):
+    """ Redacting Formatter class """
+
+    REDACTION = "***"
+    FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
+    SEPARATOR = ";"
+
+    def __init__(self, fields: List[str]):
+        super(RedactingFormatter, self).__init__(self.FORMAT)
+        self.fields = fields
+
+    def format(self, record: logging.LogRecord) -> str:
+        return filter_datum(self.fields, self.REDACTION,
+                            super().format(record) , self.SEPARATOR)
 
 def filter_datum(fields: List[str], redaction: str,
                  message: str, separator: str) -> str:
     """ I believe I should be removing things """
 
-    print(message)
     for target in fields:
-        ex = f"(?<={target}=).*?(?={separator})"
-        youveGotMail = re.sub(ex, redaction, message)
+        message = re.sub(f"{target}=.*?{separator}",
+                         f"{target}={redaction}{separator}", message)
 
-    return youveGotMail
+    return message
