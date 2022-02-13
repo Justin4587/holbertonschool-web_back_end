@@ -5,6 +5,8 @@ import re
 from typing import List
 import logging
 
+PII_FIELDS = ('name', 'email', 'phone', 'ssn', 'password')
+
 
 class RedactingFormatter(logging.Formatter):
     """ Redacting Formatter class needs more words """
@@ -35,3 +37,15 @@ def filter_datum(fields: List[str], redaction: str,
                          f"{target}={redaction}{separator}", message)
 
     return message
+
+def get_logger() -> logging.Logger:
+    """ I wonder if theres any logging inolved """
+
+    turd = logging.getLogger('user_data')
+    turd.setLevel(logging.INFO)
+    turd.propagate = False
+    handled = logging.StreamHandler()
+    handled.setFormatter(RedactingFormatter(PII_FIELDS))
+    turd.addHandler(handled)
+
+    return turd
