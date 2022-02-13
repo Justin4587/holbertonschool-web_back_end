@@ -1,9 +1,12 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.7
 """ I will do my own filtering thank you. """
 
 import re
 from typing import List
 import logging
+from os import environ
+from mysql.connector import connection
+
 
 PII_FIELDS = ('name', 'email', 'phone', 'ssn', 'password')
 
@@ -33,8 +36,10 @@ def filter_datum(fields: List[str], redaction: str,
     """ I believe I should be removing things """
 
     for target in fields:
-        message = re.sub(f"{target}=.*?{separator}",
-                         f"{target}={redaction}{separator}", message)
+        hvt = '{target}=(.*?){separator}'
+        placebo = '{target}={redaction}{separator}'
+
+        message = re.sub(hvt, placebo, message)
 
     return message
 
@@ -50,3 +55,15 @@ def get_logger() -> logging.Logger:
     turd.addHandler(handled)
 
     return turd
+
+
+def get_db() -> mysql.connector.connection.MySQLConnection:
+    """ connecting to things with safety """
+
+    user = get("PERSONAL_DATA_DB_USERNAME", "root")
+    word = get("PERSONAL_DATA_DB_PASSWORD", "")
+    host = get("PERSONAL_DATA_DB_HOST", "localhost")
+    dbdb = get("PERSONAL_DATA_DB_NAME")
+    isql = mysql.connector.connection.MySQLConnection(user, word, host, dbdb)
+
+    return isql
