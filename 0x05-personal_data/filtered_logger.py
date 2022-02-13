@@ -1,11 +1,11 @@
-#!/usr/bin/env python3.7
+#!/usr/bin/env python3
 """ I will do my own filtering thank you. """
 
 import re
 from typing import List
 import logging
 from os import environ
-from mysql.connector import connection
+
 
 
 PII_FIELDS = ('name', 'email', 'phone', 'ssn', 'password')
