@@ -9,6 +9,7 @@ import logging
 class RedactingFormatter(logging.Formatter):
     """ Redacting Formatter class needs more words """
 
+
     REDACTION = "***"
     FORMAT = "[HOLBERTON] %(name)s %(levelname)s %(asctime)-15s: %(message)s"
     SEPARATOR = ";"
@@ -26,7 +27,6 @@ class RedactingFormatter(logging.Formatter):
 def filter_datum(fields: List[str], redaction: str,
                  message: str, separator: str) -> str:
     """ I believe I should be removing things """
-
 
     for target in fields:
         message = re.sub(f"{target}=.*?{separator}",
