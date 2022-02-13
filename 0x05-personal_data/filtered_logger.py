@@ -21,13 +21,14 @@ class RedactingFormatter(logging.Formatter):
 
     def format(self, record: logging.LogRecord) -> str:
         """ Redacting Formatter class needs more words """
-        
+
         return filter_datum(self.fields, self.REDACTION,
                             super().format(record), self.SEPARATOR)
 
 def filter_datum(fields: List[str], redaction: str,
                  message: str, separator: str) -> str:
     """ I believe I should be removing things """
+
 
     for target in fields:
         message = re.sub(f"{target}=.*?{separator}",
