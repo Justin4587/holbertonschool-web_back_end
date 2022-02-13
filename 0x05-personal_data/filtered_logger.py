@@ -25,6 +25,7 @@ def filter_datum(fields: List[str], redaction: str,
                  message: str, separator: str) -> str:
     """ I believe I should be removing things """
 
+
     for target in fields:
         message = re.sub(f"{target}=.*?{separator}",
                          f"{target}={redaction}{separator}", message)
