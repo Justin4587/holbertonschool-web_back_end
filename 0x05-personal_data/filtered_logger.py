@@ -41,6 +41,7 @@ def filter_datum(fields: List[str], redaction: str,
 def get_logger() -> logging.Logger:
     """ I wonder if theres any logging inolved """
 
+
     turd = logging.getLogger('user_data')
     turd.setLevel(logging.INFO)
     turd.propagate = False
