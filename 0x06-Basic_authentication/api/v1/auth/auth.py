@@ -27,7 +27,7 @@ class Auth():
 
     def authorization_header(self, request=None) -> str:
         """words that will equal points"""
-        if request is None:
+        if request is None or request.headers.get("Authorization"):
             return None
 
         return request.headers.get("Authorization")
