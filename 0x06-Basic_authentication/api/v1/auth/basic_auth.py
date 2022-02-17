@@ -62,4 +62,6 @@ class BasicAuth(Auth):
         for user in users:
             if user.email == user_email and user.is_valid_password(user_pwd):
                 return user
+            elif user.email != user_email:
+                return None
         return None
