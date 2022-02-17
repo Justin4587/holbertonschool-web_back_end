@@ -70,3 +70,13 @@ class BasicAuth(Auth):
             elif user.email != user_email:
                 return None
         return None
+
+    def current_user(self, request=None) -> TypeVar('User'):
+        """ current user method """
+        head = self.authorization_header(request)
+
+        if not head:
+            return None
+        email, pwd = self.extract_user_credentials(self.decode_base64_authorization_header(self.extract_base64_authorization_header(head)))
+
+        return self.user_object_from_credentials(email, pwd)
