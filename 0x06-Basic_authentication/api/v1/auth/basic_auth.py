@@ -77,9 +77,9 @@ class BasicAuth(Auth):
 
         if not head:
             return None
-        email, pwd = self.extract_user_credentials(
-                                                   self.decode_base64_authorization_header(
-                                                   self.extract_base64_authorization_header(
-                                                   head)))
+
+        step0 = self.extract_base64_authorization_header(head)
+        step1 = self.decode_base64_authorization_header(step0)
+        email, pwd = self.extract_user_credentials(step1)
 
         return self.user_object_from_credentials(email, pwd)
