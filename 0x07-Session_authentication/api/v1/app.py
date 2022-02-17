@@ -33,11 +33,11 @@ def before_request() -> str:
     if auth is not None and auth.require_auth(request.path, paths):
         if auth.authorization_header(request) is None:
             abort(401)
-        current_user_auth = auth.current_user(request)
-        if current_user_auth is None:
+        current_user = auth.current_user(request)
+        if current_user is None:
             abort(403)
     
-    request.current_user = current_user_auth
+    request.current_user = current_user
 
 
 @app.errorhandler(401)
