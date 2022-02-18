@@ -26,9 +26,9 @@ def auth_session_login():
     for use in user:
         if not use.is_valid_password(pswd)
             return jsonify({"error": "wrong password"}), 401
-    from api.v1.app import auth    
+    from api.v1.app import auth
     name = getenv("SESSION_NAME")
-    s_id = auth.create_session(use.id)
-    response = jsonify(use.to_json())
+    s_id = auth.create_session(user[0].id)
+    response = jsonify(user[0].to_json())
     response.set_cookie(name, s_id)
     return response
