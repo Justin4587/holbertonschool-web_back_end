@@ -4,7 +4,7 @@ Route module for the API
 """
 from flask import request
 from typing import List, TypeVar
-
+from os import getenv
 
 class Auth():
     """ auth class """
@@ -35,3 +35,9 @@ class Auth():
     def current_user(self, request=None) -> TypeVar("User"):
         """ returns none """
         return None
+
+    def session_cookie(self, request=None):
+        """ session cookie"""
+        if request is None:
+            return None
+        return request.cookies.get(getenv("SESSION_NAME"))
