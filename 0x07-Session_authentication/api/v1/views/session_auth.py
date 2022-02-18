@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-""" views flas session auth """
+""" views flas session auth do I need more
+words
+"""
 from api.v1.views import app_views
 from flask import abort, jsonify, request
 from models.user import User
@@ -7,7 +9,9 @@ from os import getenv
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
 def auth_session_login():
-    """ POST method for login """
+    """ POST method for login
+    maybe here
+    """
     email = request.form.get("email")
     pswd = request.form.get("password")
 
