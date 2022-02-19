@@ -23,7 +23,7 @@ class Auth():
         for ast in excluded_paths:
             if ast[-1] == '*':
                 ast = ast[0:-1]
-            if path in ast:
+            if ast in path:
                 return False
 
         if path in excluded_paths:
