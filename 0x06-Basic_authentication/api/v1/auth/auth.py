@@ -17,8 +17,8 @@ class Auth():
         if path[-1] != '/':
             path += '/'
 
-        if excluded_paths[-1] != '/':
-            excluded_paths += '/'
+        """if excluded_paths[-1] != '/':
+            excluded_paths += '/'"""
 
         for ast in excluded_paths:
             if ast[-1] == '*':
