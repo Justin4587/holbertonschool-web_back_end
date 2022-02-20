@@ -18,7 +18,7 @@ class SessionExpAuth(SessionAuth):
 
     def create_session(self, user_id=None):
         """creates something """
-        sessId = super().create_session(user_id) 
+        sessId = super().create_session(user_id)
         if sessId is None:
             return None
         self.user_id_by_session_id[sessId] = {
@@ -37,7 +37,8 @@ class SessionExpAuth(SessionAuth):
             return sess_dict.get("user_id")
         if "created_at" not in sess_dict:
             return None
-        sess_time = sess_dict.get("created_at") + timedelta(seconds=self.session_duration)
+        sess_time = sess_dict.get("created_at") +\
+         timedelta(seconds=self.session_duration)
         if sess_time < datetime.now():
             return None
         return sess_dict.get("user_id")
