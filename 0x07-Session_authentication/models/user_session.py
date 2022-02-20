@@ -2,6 +2,7 @@
 """ user session class """
 from models.base import Base
 
+
 class UserSession(Base):
     """ user session class inherit from base """
     def __init__(self, *args: list, **kwargs: dict):
