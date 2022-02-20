@@ -39,6 +39,6 @@ class SessionDBAuth(SessionExpAuth):
         all_sess = UserSession.all()
         for session in all_sess:
             if session.session_id == cook:
-                del session
+                UserSession.remove(session)
                 UserSession.save_to_file()
         return True
