@@ -22,8 +22,14 @@ class SessionDBAuth(SessionExpAuth):
 
     def user_id_for_session_id(self, session_id=None):
         """ same time trade """
-        user_id = super().user_id_for_session_id(session_id)
-        return user_id
+        if session_id is None:
+            return None
+        UserSession.load_from_file()
+        user_sess = UserSession.search({
+            "session_id": session_id})
+        if not user_sess:
+            return None
+        return user_sess[0].user_id
 
     def destroy_session(self, user_id=None):
         """ destroy it if it matches"""
