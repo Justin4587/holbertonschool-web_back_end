@@ -56,7 +56,7 @@ class DB:
         """I need the obligatory comment section,
         I believe I might turn these into youtube comment sections
         """
-        
+
         user = self.find_user_by(id=user_id)
         for k, v in kwargs.items():
             if hasattr(user, k):
