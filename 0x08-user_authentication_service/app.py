@@ -32,7 +32,7 @@ def login() -> str:
     except:
         return
     if auth.valid_login(email, password) is True:
-        s_id = auth.create_session(email)
+        s_id = AUTH.create_session(email)
         resp = jsonify({"email": email,
         "message": "logged in"})
         resp.set_cookie("session_id", s_id)
