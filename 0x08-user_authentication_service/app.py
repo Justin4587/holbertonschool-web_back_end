@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from crypt import methods
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, abort
 from auth import Auth
 app = Flask(__name__)
 AUTH = Auth()
