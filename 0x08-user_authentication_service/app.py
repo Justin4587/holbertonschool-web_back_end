@@ -24,8 +24,8 @@ def reg_user() -> str:
 
 @app.route("/sessions", methods=["POST"], strict_slashes=False)
 def login() -> str:
-        email = request.form.get("email")
-        password = request.form.get("password")
+    email = request.form.get("email")
+    password = request.form.get("password")
     if AUTH.valid_login(email, password) is True:
         s_id = AUTH.create_session(email)
         resp = jsonify({"email": email,
