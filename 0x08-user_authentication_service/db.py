@@ -30,12 +30,20 @@ class DB:
         return self.__session
 
     def add_user(self, email: str, hashed_password: str) -> User:
+        """I need the obligatory comment section,
+        I believe I might turn these into youtube comment sections
+        """
+
         user = User(email=email, hashed_password=hashed_password)
         self._session.add(user)
         self._session.commit()
         return user
 
     def find_user_by(self, **kwargs) -> User:
+        """I need the obligatory comment section,
+        I believe I might turn these into youtube comment sections
+        """
+
         try:
             user = self._session.query(User).filter_by(**kwargs).first()
         except TypeError:
@@ -45,6 +53,10 @@ class DB:
         return user
 
     def update_user(self, user_id: int, **kwargs) -> None:
+        """I need the obligatory comment section,
+        I believe I might turn these into youtube comment sections
+        """
+        
         user = self.find_user_by(id=user_id)
         for k, v in kwargs.items():
             if hasattr(user, k):
