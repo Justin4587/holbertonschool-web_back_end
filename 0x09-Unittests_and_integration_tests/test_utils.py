@@ -13,7 +13,6 @@ class TestAccessNestedMap(unittest.TestCase):
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
         ({"a": {"b": 2}}, ("a", "b"), 2)
     ])
-
     def test_access_nested_map(self, nested_map, path, expected):
         """checks nested map return"""
         self.assertEqual(access_nested_map(nested_map, path), expected)
@@ -34,7 +33,6 @@ class TestGetJson(unittest.TestCase):
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False})
     ])
-
     def test_get_json(self, test_url, test_payload):
         """its in the def"""
         with patch("requests.get") as mock:
@@ -48,7 +46,7 @@ class TestMemoize(unittest.TestCase):
     """ I wonder what it will do """
     def test_memoize(self):
         """ hmm copy and paste """
-        
+
         class TestClass:
             """ more remarks about stuff"""
             def a_method(self):
