@@ -6,8 +6,8 @@ from utils import access_nested_map
 
 
 class TestAccessNestedMap(unittest.TestCase):
-    """im just picturing a group of old school maps huddled together"""
-    @parameterized.expand([
+    """ im just picturing a group of old school maps huddled together """
+    @parameterized([
         ({"a": 1}, ("a",), 1),
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
         ({"a": {"b": 2}}, ("a", "b"), 2)
