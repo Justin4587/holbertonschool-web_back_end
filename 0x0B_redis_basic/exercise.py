@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """something about redis"""
 import redis
 from uuid import uuid4
