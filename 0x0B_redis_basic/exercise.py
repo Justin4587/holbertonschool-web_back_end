@@ -31,7 +31,7 @@ def call_history(method: Callable) -> Callable:
     return call_history_wrap
 
 
-def replay(method: Callable):
+def replay(fn: Callable) -> str:
     """something about redis"""
     _self = method.__self__
     q_name = method.__qualname__
