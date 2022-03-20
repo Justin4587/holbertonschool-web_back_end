@@ -33,21 +33,20 @@ def call_history(method: Callable) -> Callable:
 
 def replay(fn: Callable) -> str:
     """something about redis"""
-    _self = method.__self__
-    q_name = method.__qualname__
-    calls = _self.get(q_name)
+    _self = redis.Redis()
+    q_name = fn.__qualname__
+    calls = _self.get(q_name).decode("utf-8")
 
     if calls:
-        num = _self.get_str(calls)
         ins = _self._redis.lrange(calls + ":inputs", 0, -1)
         outs = _self._redis.lrange(calls + ":outputs", 0, -1)
-    print(f"{calls} was called {num} times:")
+    print(f"{q_name} was called {calls} times:")
     zip_val = zip(ins, outs)
     result = list(zip_val)
     for k, v in result:
         name = _self.get_str(k)
         number = _self.get_str(v)
-        print(f"{calls}(*{name}) -> {number}")
+        print(f"{q_name}(*{name}) -> {number}")
 
 
 class Cache():
