@@ -31,6 +31,25 @@ def call_history(method: Callable) -> Callable:
     return call_history_wrap
 
 
+def replay(method: Callable):
+    """something about redis"""
+    _self = method.__self__
+    q_name = method.__qualname__
+    calls = _self.get(q_name)
+
+    if calls:
+        num = _self.get_str(calls)
+        ins = _self._redis.lrange(calls + ":inputs", 0, -1)
+        outs = _self._redis.lrange(calls + ":outputs", 0, -1)
+    print(f"{calls} was called {num} times:")
+    zip_val = zip(ins, outs)
+    result = list(zip_val)
+    for k, v in result:
+        name = _self.get_str(k)
+        number = _self.get_str(v)
+        print(f"{calls}(*{name}) -> {number}")
+
+
 class Cache():
     """Cache class for redis module"""
 
