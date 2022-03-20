@@ -42,7 +42,7 @@ def replay(fn: Callable) -> str:
 
     result = zip(ins, outs)
     zip_list = list(result)
-    print(zip_list)
+
     for k, v in zip_list:
         print(f"{q_name}(*{k.decode('utf-8')}) -> {v.decode('utf-8')}")
 
