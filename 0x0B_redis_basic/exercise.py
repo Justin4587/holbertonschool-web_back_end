@@ -36,17 +36,15 @@ def replay(fn: Callable) -> str:
     _self = redis.Redis()
     q_name = fn.__qualname__
     calls = _self.get(q_name).decode("utf-8")
-
-    if calls:
-        ins = _self._redis.lrange(calls + ":inputs", 0, -1)
-        outs = _self._redis.lrange(calls + ":outputs", 0, -1)
+    ins = _self.lrange(q_name + ":inputs", 0, -1)
+    outs = _self.lrange(q_name + ":outputs", 0, -1)
     print(f"{q_name} was called {calls} times:")
-    zip_val = zip(ins, outs)
-    result = list(zip_val)
-    for k, v in result:
-        name = _self.get_str(k)
-        number = _self.get_str(v)
-        print(f"{q_name}(*{name}) -> {number}")
+
+    result = zip(ins, outs)
+    zip_list = list(result)
+    print(zip_list)
+    for k, v in zip_list:
+        print(f"{q_name}(*{k.decode('utf-8')}) -> {v.decode('utf-8')}")
 
 
 class Cache():
