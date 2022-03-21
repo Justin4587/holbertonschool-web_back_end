@@ -4,8 +4,7 @@ DELIMETER $$
 CREATE PROCEDURE AddBonus (
     IN user_id INT,
     IN project_name VARCHAR(255),
-    IN score INT
-)
+    IN score INT)
 BEGIN
     INSERT INTO projects (name)
     SELECT project_name FROM DUAL WHERE NOT EXISTS
