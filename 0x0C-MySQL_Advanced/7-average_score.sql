@@ -4,10 +4,10 @@ DELIMETER $$
 CREATE PROCEDURE ComputeAverageScoreForUser (
     IN user_id INT)
 BEGIN
-    SET @scored = (
+    SET scored = (
         SELECT AVG(score)
         FROM corrections WHERE corrections.user_id = user_id);
-    UPDATE users SET average_score = @scored
+    UPDATE users SET average_score = scored
     WHERE id = user_id;
 END$$
 DELIMETER ;
