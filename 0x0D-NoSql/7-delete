@@ -1,0 +1,2 @@
+// script to delete all docs with name
+db.school.deleteMany({name : "Holberton school"})
