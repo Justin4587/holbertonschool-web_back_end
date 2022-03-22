@@ -7,7 +7,7 @@ def insert_school(mongo_collection, **kwargs):
     coll = {}
     for k, v in kwargs.items():
         coll[k] = v
-    docId = mongo_collection.insert_one(coll)
+    docId = mongo_collection.insert(coll)
     return docId
 
 if __name__ == "__main__":
