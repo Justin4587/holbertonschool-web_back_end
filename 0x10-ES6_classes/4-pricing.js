@@ -29,4 +29,8 @@ export default class Pricing {
     const fuck = this.currency.displayFullCurrency();
     return amo + spce + fuck;
   }
+
+  static convertPrice(amount, conversionRate) {
+    return amount * conversionRate;
+  }
 }
