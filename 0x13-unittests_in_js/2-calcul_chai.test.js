@@ -9,6 +9,9 @@ describe('#calculateNumber()', function () {
     expect(calculateNumber('SUBTRACT', 1.4, 4.5)).to.equal(-4);
   });
   it('', function () {
+    expect(calculateNumber('SUBTRACT', -1.4, -4.5)).to.equal(3);
+  });
+  it('', function () {
     expect(calculateNumber('DIVIDE', 1.4, 4.5)).to.equal(0.2);
   });
   it('', function () {
