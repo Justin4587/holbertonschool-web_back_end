@@ -1,6 +1,7 @@
 const fs = require('fs');
 var { parse } = require('csv-parse');
 const total = 'Number of students: ';
+const fieldText = 'Number of students in CS'
 let clone = [];
 var parser = parse({ skip_empty_lines: true }, function (err, student) {
   let students = [];
