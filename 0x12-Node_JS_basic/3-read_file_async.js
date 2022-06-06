@@ -7,12 +7,13 @@ async function countStudents(path) {
   } catch (E) {
     throw new Error('Cannot load the database');
   }
-  
+
   let strngs = data.toString().split('\n');
   strngs = strngs.filter((strng) => strng !== '');
   strngs.shift();
   const total = strngs.length;
-  console.log('Number of students: ' + total);
+  const totalText = 'Number of students: ';
+  console.log(totalText + total);
 
   const csStudents = strngs.filter((strng) => strng.endsWith('CS')).map((strng) => {
     const namesCs = strng.split(',');
@@ -25,7 +26,6 @@ async function countStudents(path) {
   const cs3 = csStudents.join(', ');
   console.log(cs + cs1 + cs2 + cs3);
 
-  
   const sweStudents = strngs.filter((strng) => strng.endsWith('SWE')).map((strng) => {
     const namesSwe = strng.split(',');
     return namesSwe[0];
@@ -36,7 +36,7 @@ async function countStudents(path) {
   const sw2 = '. List: ';
   const sw3 = sweStudents.join(', ');
   console.log(sw + sw1 + sw2 + sw3);
-  return sw + sw1 + sw2 + sw3
-};
+  return sw + sw1 + sw2 + sw3;
+}
 
 module.exports = countStudents;
