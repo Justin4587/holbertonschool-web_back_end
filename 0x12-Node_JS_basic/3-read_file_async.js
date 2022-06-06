@@ -36,6 +36,7 @@ async function countStudents(path) {
   const sw2 = '. List: ';
   const sw3 = sweStudents.join(', ');
   console.log(sw + sw1 + sw2 + sw3);
+  return sw + sw1 + sw2 + sw3
 };
 
 module.exports = countStudents;

@@ -1,7 +1,7 @@
 const fs = require('fs');
 var { parse } = require('csv-parse');
 const total = 'Number of students: ';
-const fieldText = 'Number of students in CS'
+const fieldText = 'Number of students in '
 let clone = [];
 var parser = parse({ skip_empty_lines: true }, function (err, student) {
   let students = [];
@@ -10,14 +10,14 @@ var parser = parse({ skip_empty_lines: true }, function (err, student) {
   console.log(total + totalnum);
   clone = [ ...students ];
 
-  for (let i = 0; i < students[0].length; i++) {
-    console.log(students[0][i][0]);
-    console.log(students[0].length);
+  // for (let i = 0; i < students[0].length; i++) {
+  //   console.log(students[0][i][0]);
+  //   console.log(students[0].length);
     //console.log(clone[0][i][i]);
-  }
-  console.log(clone[0][0][0]);
-  console.log(clone[0][0][1]); console.log(clone[0][0][0]);
-  console.log(clone[0][2][0]);
+  // }
+  // console.log(clone[0][0][0]);
+  // console.log(clone[0][0][1]); console.log(clone[0][0][0]);
+  // console.log(clone[0][2][0]);
 });
 
 function countStudents(path) {
